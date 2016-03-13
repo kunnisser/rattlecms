@@ -1,5 +1,5 @@
 var mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost/rattle");
+mongoose.connect("mongodb://rattleAdmin:adminAdmin@localhost/rattle");
 var db=mongoose.connection;
 db.on('error',console.error);
 db.once('open',function(){

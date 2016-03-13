@@ -407,7 +407,7 @@ a,a:focus, a:hover, a:active {
     margin-top: 12px;
     width: 23px;
     height: 25px;
-    background: #e9ebec url("../img/body-bg.png");
+    background: #e9ebec url("../images/body-bg.png");
 }
 
 .sidebar-toggler:before {
@@ -446,7 +446,7 @@ a,a:focus, a:hover, a:active {
 }
 
 ul.sidebar-menu span.icon-box  {
-    background: url("../img/side-bar-list-bg.png") !important;
+    background: url("../images/side-bar-list-bg.png") !important;
     padding: 20px;
     margin-right: 10px;
 }
@@ -478,7 +478,7 @@ ul.sidebar-menu span.icon-box  {
     margin: 0 0 1px 0;
     padding: 0;
     border: 0px;
-    background: url("../img/side-bar-list-bg.png");
+    background: url("../images/side-bar-list-bg.png");
     line-height: 30px;
 }
 
@@ -566,7 +566,7 @@ ul.sidebar-menu span.icon-box  {
 
 #sidebar > ul > li > ul.sub > li.active > a, #sidebar > ul > li > ul.sub > li > a:hover {
 
-    background: url("../img/submenu_hover.png") !important;
+    background: url("../images/submenu_hover.png") !important;
 }
 
 /* ie8, ie9 fixes */
@@ -606,7 +606,7 @@ ul.sidebar-menu span.icon-box  {
     font-size: 12px;
     color: #fff;
     text-align: center;
-    /*background: url("../img/top-bg.jpg");*/
+    /*background: url("../images/top-bg.jpg");*/
 }
 
 #footer .go-top {
@@ -729,7 +729,7 @@ form legend {
 .breadcrumb > li {
     height: 33px;
     line-height: 33px;
-    background: url("../img/bread-crumb-bg.jpg") repeat-x;
+    background: url("../images/bread-crumb-bg.jpg") repeat-x;
     float: left;
     margin-bottom: 25px;
     padding: 0  0 0 8px;
@@ -747,7 +747,7 @@ form legend {
     width: 33px;
     height: 33px;
     line-height: 33px;
-    background: url("../img/bread-crumb-divider.jpg") no-repeat;
+    background: url("../images/bread-crumb-divider.jpg") no-repeat;
 }
 .breadcrumb > li > .divider-last {
     display: inline-block;
@@ -755,7 +755,7 @@ form legend {
     width: 19px;
     height: 33px;
     line-height: 33px;
-    background: url("../img/bread-crumb-last.jpg") no-repeat;
+    background: url("../images/bread-crumb-last.jpg") no-repeat;
 }
 .breadcrumb .tooltip {
     text-shadow:none !important;
@@ -1635,7 +1635,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 }
 
 .zoom .zoom-icon {
-    background-image:url("../img/overlay-icon.png");
+    background-image:url("../images/overlay-icon.png");
     background-color: #222;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -2053,7 +2053,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 .circle-state-overview .span3:first-child {margin-left: 20px;}
 
 .circle-state-icon {
-    background: url("../img/body-bg.png") repeat scroll 0 0 #F7F7F7;
+    background: url("../images/body-bg.png") repeat scroll 0 0 #F7F7F7;
     border-radius: 60px 60px 60px 60px;
     font-size: 38px;
     height: 38px;
@@ -3113,7 +3113,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 /*lock*/
 
 #lock-body {
-    background: url("../img/bg-grey.jpg") !important;
+    background: url("../images/bg-grey.jpg") !important;
 }
 
 .lock-header {
@@ -3184,7 +3184,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 /*coming soon*/
 
 #coming-body {
-    background: url("../img/bg-denim.png") !important;
+    background: url("../images/bg-denim.png") !important;
 }
 
 .coming-soon {
