@@ -16,12 +16,13 @@ Website: http://thevectorlab.net/
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
-	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link href="css/style.css" rel="stylesheet" />
-	<link href="css/style_responsive.css" rel="stylesheet" />
-	<link href="css/style_default.css" rel="stylesheet" id="style_color" />
+	<link href="<%= baseUrl%>plugins/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/css/style.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/css/style_gray.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/css/style_responsive.css" rel="stylesheet" />
+	<link href="<%= baseUrl%>plugins/css/style_default.css" rel="stylesheet" id="style_color" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -33,7 +34,7 @@ Website: http://thevectorlab.net/
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="index.html">
-				    <img src="images/logo.png" alt="Admin Lab" />
+				    <img src="<%= baseUrl%>plugins/images/logo.png" alt="Admin Lab" />
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -48,9 +49,10 @@ Website: http://thevectorlab.net/
                     <ul class="nav pull-right top-menu" >
 						<!-- BEGIN USER LOGIN DROPDOWN -->
 						<li class="dropdown">
+							<% if(session){%>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="../images/hah.png" alt="">
-                             <span class="username">kunnisser</span>
+                             <span class="username"><%=session.username%></span>
 							<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
@@ -59,6 +61,10 @@ Website: http://thevectorlab.net/
 								<li class="divider"></li>
 								<li><a href="login.html"><i class="icon-key"></i>退出</a></li>
 							</ul>
+							<%}else{%>
+								
+							<%}%>	
+
 						</li>
 						<!-- END USER LOGIN DROPDOWN -->
 					</ul>
@@ -86,15 +92,15 @@ Website: http://thevectorlab.net/
 			<!-- END RESPONSIVE QUICK SEARCH FORM -->
 			<!-- BEGIN SIDEBAR MENU -->
 			<ul class="sidebar-menu">
-				<li class="has-sub active">
+				<li class="has-sub">
 					<a href="javascript:;" class="">
 					    <span class="icon-box"> <i class="icon-dashboard"></i></span> 项目管理
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li class="active"><a class="" href="index.html">新建项目</a></li>
-                        <li><a class="" href="index_2.html">删除项目</a></li>
-
+                        <li class="active"><a class="" href="index.html">站点管理</a></li>
+                        <li><a class="" href="index_2.html">系统接口</a></li>
+                        <li><a class="" href="#">数据统计</a></li>
                     </ul>
 				</li>
 				<li class="has-sub">
@@ -109,81 +115,65 @@ Website: http://thevectorlab.net/
 				</li>
 				<li class="has-sub">
 					<a href="javascript:;" class="">
-					<span class="icon-box"><i class="icon-cogs"></i></span> Components
+					<span class="icon-box"><i class="icon-file-alt"></i></span>信息管理
 					<span class="arrow"></span>
 					</a>
-					<ul class="sub">
-                        <li><a class="" href="calendar.html">Calendar</a></li>
-                        <li><a class="" href="data_table.html">Data Table</a></li>
-                        <li><a class="" href="grids.html">Grids</a></li>
-                        <li><a class="" href="charts.html">Visual Charts</a></li>
-                        <li><a class="" href="messengers.html">Conversations</a></li>
-                        <li><a class="" href="gallery.html"> Gallery</a></li>
+                    <ul class="sub">
+                        <li><a class="" href="blank.html">文章管理</a></li>
+                        <li><a class="" href="sidebar_closed.html">文章审核</a></li>
+                        <li><a class="" href="coming_soon.html">发布管理</a></li>
+                        <li><a class="" href="blog.html">评论管理</a></li>
+                        <li><a class="" href="about_us.html">投票管理</a></li>
+                        <li><a class="" href="contact_us.html">快速发布</a></li>
                     </ul>
 				</li>
                 <li class="has-sub">
                     <a href="javascript:;" class="">
-                        <span class="icon-box"><i class="icon-tasks"></i></span> Form Stuff
+                        <span class="icon-box"><i class="icon-tasks"></i></span> 模板管理
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="form_layout.html">Form Layouts</a></li>
-                        <li><a class="" href="form_component.html">Form Components</a></li>
-                        <li><a class="" href="form_wizard.html">Form Wizard</a></li>
-                        <li><a class="" href="form_validation.html">Form Validation</a></li>
-                        <li><a class="" href="dropzone.html">Dropzone File Upload </a></li>
+                        <li><a class="" href="form_layout.html">模板列表</a></li>
+                        <li><a class="" href="form_component.html">文件管理</a></li>
                     </ul>
                 </li>
 				<li class="has-sub">
 	               <a href="javascript:;" class="">
-	               <span class="icon-box"><i class="icon-fire"></i></span> Icons
+	               <span class="icon-box"><i class="icon-fire"></i></span> 专题管理
 	               <span class="arrow"></span>
 	               </a>
 	               <ul class="sub">
-	                  <li><a class="" href="font_awesome.html">Font Awesome</a></li>
-                      <li><a class="" href="glyphicons.html">Glyphicons</a></li>
+	                  <li><a class="" href="font_awesome.html">专题内容管理</a></li>
+                      <li><a class="" href="glyphicons.html">专题模板管理</a></li>
 	               </ul>
 	            </li>
-				<li class="has-sub">
-					<a href="javascript:;" class="">
-					<span class="icon-box"><i class="icon-map-marker"></i></span> Maps
-					<span class="arrow"></span>
-					</a>
-					<ul class="sub">
-						<li><a class="" href="maps_google.html"> Google Maps</a></li>
-						<li><a class="" href="maps_vector.html"> Vector Maps</a></li>
-					</ul>
-				</li>
-				<li class="has-sub">
-					<a href="javascript:;" class="">
-					<span class="icon-box"><i class="icon-file-alt"></i></span> Sample Pages
-					<span class="arrow"></span>
-					</a>
-                    <ul class="sub">
-                        <li><a class="" href="blank.html">Blank Page</a></li>
-                        <li><a class="" href="sidebar_closed.html">Sidebar Closed Page</a></li>
-                        <li><a class="" href="coming_soon.html">Coming Soon</a></li>
-                        <li><a class="" href="blog.html">Blog</a></li>
-                        <li><a class="" href="about_us.html">About Us</a></li>
-                        <li><a class="" href="contact_us.html">Contact Us</a></li>
-                    </ul>
-				</li>
                 <li class="has-sub">
                     <a href="javascript:;" class="">
-                        <span class="icon-box"><i class="icon-glass"></i></span> Extra
+                        <span class="icon-box"><i class="icon-cloud"></i></span> 信息源管理
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="lock.html">Lock Screen</a></li>
-                        <li><a class="" href="profile.html">Profile</a></li>
-                        <li><a class="" href="invoice.html">Invoice</a></li>
-                        <li><a class="" href="pricing_tables.html">Pricing Tables</a></li>
-                        <li><a class="" href="faq.html">FAQ</a></li>
-                        <li><a class="" href="404.html">404 Error</a></li>
-                        <li><a class="" href="500.html">500 Error</a></li>
+                        <li><a class="" href="lock.html">关键词管理</a></li>
+                        <li><a class="" href="profile.html">数据管理</a></li>
                     </ul>
                 </li>
-				<li><a class="" href="login.html"><span class="icon-box"><i class="icon-user"></i></span> Login Page</a></li>
+				<li class="has-sub">
+					<a href="javascript:;" class="">
+					<span class="icon-box"><i class="icon-cogs"></i></span> 系统管理
+					<span class="arrow"></span>
+					</a>
+					<ul class="sub">
+                        <li><a class="" href="calendar.html">用户管理</a></li>
+                        <li><a class="" href="data_table.html">权限管理</a></li>
+                        <li><a class="" href="data_table.html">日志管理</a></li>
+                    </ul>
+				</li>
+				<li>
+					<% if(session){%>
+						<a class="" href="/users/loginout"><span class="icon-box"><i class="icon-user"></i></span>注销账号</a></li>
+					<%}else{%>
+						<a class="" href="/users/login"><span class="icon-box"><i class="icon-user"></i></span>点此登录</a></li>
+					<%}%>			
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
@@ -641,16 +631,16 @@ Website: http://thevectorlab.net/
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS -->
 	<!-- Load javascripts at bottom, this will reduce page load time -->
-	<script src="js/jquery-1.8.3.min.js"></script>
-	<script src="assets/jquery-slimscroll/js/jquery-ui-1.9.2.custom.min.js"></script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<%= baseUrl%>plugins/js/jquery-1.8.3.min.js"></script>
+	<script src="<%= baseUrl%>plugins/assets/jquery-slimscroll/js/jquery-ui-1.9.2.custom.min.js"></script>
+	<script src="<%= baseUrl%>plugins/assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- ie8 fixes -->
 	<!--[if lt IE 9]>
 	<script src="js/excanvas.js"></script>
 	<script src="js/respond.js"></script>
 	<![endif]-->
-	<script src="assets/jquery-knob/js/jquery.knob.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="<%= baseUrl%>plugins/assets/jquery-knob/js/jquery.knob.js"></script>
+	<script src="<%= baseUrl%>plugins/js/scripts.js"></script>
 	<script>
 		jQuery(document).ready(function() {
 			// initiate layout and plugins
