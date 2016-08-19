@@ -1216,7 +1216,7 @@ var App = function () {
         });
 
         var setColor = function (color) {
-            $('#style_color').attr("href", "css/style_" + color + ".css");
+            $('#style_color').attr("href", "plugins/css/style_" + color + ".css");
         }
 
     }
@@ -1896,7 +1896,14 @@ var App = function () {
 
                 if (current == 1) {
                     $('#form_wizard_1').find('.button-previous').hide();
-                } else {
+                }
+                else if(current==3){
+                    $('#form_wizard_1').find('.button-next').hide();
+					$("#clipBtn").show();
+                }
+                else {
+                	$("#clipBtn").hide();
+					$('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-previous').show();
                 }
 
@@ -1904,7 +1911,6 @@ var App = function () {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
                 } else {
-                    $('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-submit').hide();
                 }
                 App.scrollTo($('.page-title'));
@@ -1923,7 +1929,14 @@ var App = function () {
 
                 if (current == 1) {
                     $('#form_wizard_1').find('.button-previous').hide();
-                } else {
+                }
+                else if(current==3){
+                    $('#form_wizard_1').find('.button-next').hide();
+					$("#clipBtn").show();
+                }
+                else {
+                	$("#clipBtn").hide();
+					$('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-previous').show();
                 }
 
@@ -1931,7 +1944,6 @@ var App = function () {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
                 } else {
-                    $('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-submit').hide();
                 }
 
@@ -1948,10 +1960,21 @@ var App = function () {
         });
 
         $('#form_wizard_1').find('.button-previous').hide();
-        $('#form_wizard_1 .button-submit').click(function () {
-            alert('Finished!');
-        }).hide();
+        $('#form_wizard_1 .button-submit').hide()
     }
+    
+    
+    var handleRegister=function(){
+        $('#form_wizard_1 .button-submit').click(function () {  	
+			$(this).mockPlugin('/users/doReg',
+			{'username':'kunnisser'},function(args){
+				console.log(args);
+				//window.location.href="/users/login";
+			});
+        });
+    }
+    
+    
 
     var handleTagsInput = function () {
         if (!jQuery().tagsInput) {
@@ -2082,7 +2105,7 @@ var App = function () {
             handleAccordions();
             handleFormWizards();
             handleSidebarToggler();
-
+			handleRegister();
         },
 
         // login page setup
@@ -2164,24 +2187,7 @@ var App = function () {
 $('.element').tooltip();
 
 
-// Slider input js
-try{
-    jQuery("#Slider1").slider({ from: 5, to: 50, step: 2.5, round: 1, dimension: '&nbsp;$', skin: "round_plastic" });
-    jQuery("#Slider2").slider({ from: 5000, to: 150000, heterogeneity: ['50/50000'], step: 1000, dimension: '&nbsp;$', skin: "round_plastic" });
-    jQuery("#Slider3").slider({ from: 1, to: 30, heterogeneity: ['50/5', '75/15'], scale: [1, '|', 3, '|', '5', '|', 15, '|', 30], limits: false, step: 1, dimension: '', skin: "round_plastic" });
-    jQuery("#Slider4").slider({ from: 480, to: 1020, step: 15, dimension: '', scale: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'], limits: false, skin: "round_plastic", calculate: function( value ){
-        var hours = Math.floor( value / 60 );
-        var mins = ( value - hours*60 );
-        return (hours < 10 ? "0"+hours : hours) + ":" + ( mins == 0 ? "00" : mins );
-    }});
-} catch (e){
-    errorMessage(e);
-}
 
-
-//knob
-
-$(".knob").knob();
 
 
 

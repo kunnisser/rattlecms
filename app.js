@@ -7,7 +7,6 @@ var session=require("express-session");
 var cookieParser = require('cookie-parser');
 var RedisStore=require("connect-redis")(session);
 
-
 var routes = require('./admin/routes/index');
 var users = require('./admin/routes/users');
 
