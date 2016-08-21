@@ -3,8 +3,9 @@ var App = function () {
     var isMainPage = false;
     var isMapPage = false;
     var isIE8 = false;
-
-
+    
+    var accountEntity={};
+    var avator='';
 
     var handleDashboardCalendar = function () {
 
@@ -1874,6 +1875,147 @@ var App = function () {
         if (!jQuery().bootstrapWizard) {
             return;
         }
+    
+    var onnextCheck=document.getElementById("checkForm");
+    
+	var registerObj={
+    	accout:{
+    		"obj":$("#sq_username"),
+    		"mesObj":$("#sq_username").parent(".controls").find(".error-info"),
+    		"content":$("#sq_username").parent(".controls").find(".error-content"),
+    		"icon":$("#sq_username").parent(".controls").find("i"),
+    		"validateMes":'用户名应为4到10个数字或字母组合！',
+    		"requireMes":'请填写你的账号',
+    		"flag":0
+    	},
+    	pw:{
+    		"obj":$("#sq_password"),
+    		"mesObj":$("#sq_password").parent(".controls").find(".error-info"),
+    		"content":$("#sq_password").parent(".controls").find(".error-content"),
+    		"icon":$("#sq_password").parent(".controls").find("i"),
+    		"validateMes":'密码为6到12个数字或字母组合！',
+    		"requireMes":'请填写密码',
+    		"flag":0
+    	},
+    	confirmpw:{
+    		"obj":$("#sq_confirmpw"),
+    		"mesObj":$("#sq_confirmpw").parent(".controls").find(".error-info"),
+    		"content":$("#sq_confirmpw").parent(".controls").find(".error-content"),
+    		"icon":$("#sq_confirmpw").parent(".controls").find("i"),
+    		"validateMes":'确认密码不正确！',
+    		"requireMes":'请确认密码',
+    		"flag":0
+    	}
+	}  
+	
+	var registerObj1={
+    	realname:{
+    		"obj":$("#realname"),
+    		"mesObj":$("#realname").parent(".controls").find(".error-info"),
+    		"content":$("#realname").parent(".controls").find(".error-content"),
+    		"icon":$("#realname").parent(".controls").find("i"),
+    		"validateMes":'请填写真实姓名！',
+    		"requireMes":'请填写姓名',
+    		"flag":0
+    	},
+    	tel:{
+    		"obj":$("#phonenum"),
+    		"mesObj":$("#phonenum").parent(".controls").find(".error-info"),
+    		"content":$("#phonenum").parent(".controls").find(".error-content"),
+    		"icon":$("#phonenum").parent(".controls").find("i"),
+    		"validateMes":'手机号码不正确！',
+    		"requireMes":'请填写手机号码',
+    		"flag":0
+    	},
+    	email:{
+    		"obj":$("#sq-email"),
+    		"mesObj":$("#sq-email").parent(".controls").find(".error-info"),
+    		"content":$("#sq-email").parent(".controls").find(".error-content"),
+    		"icon":$("#sq-email").parent(".controls").find("i"),
+    		"validateMes":'邮箱格式不正确！',
+    		"requireMes":'请填写邮箱',
+    		"flag":0
+    	}
+	} 
+	
+	var _revAccout=document.getElementById("review_accout"),
+		_revRealname=document.getElementById("review_realname"),
+		_revTel=document.getElementById("review_tel"),
+		_revMail=document.getElementById("review_mail");
+
+    
+    var ValidateInit=function(vali_object){
+	  	for(var tmp in vali_object){
+	  		(function(tmp){
+				vali_object[tmp].obj.on("focus",function(){
+					vali_object[tmp].mesObj.show();	
+				});	
+				var nextFlag=1;
+				vali_object[tmp].obj.on("input propertychange",function(){
+					if($(this)[0].value.trim()==""){
+						vali_object[tmp].content.text(vali_object[tmp].requireMes);
+						vali_object[tmp].flag=0;
+						nextFlag=0;
+						if(!vali_object[tmp].icon.hasClass('icon-warning-sign')){
+							vali_object[tmp].icon.removeClass().addClass("icon-warning-sign");
+						}
+					}
+					else if(!validateForm($(this)[0].value.trim(),tmp)){	
+						vali_object[tmp].content.text(vali_object[tmp].validateMes);
+						vali_object[tmp].flag=0;
+						nextFlag=0;
+						if(!vali_object[tmp].icon.hasClass('icon-warning-sign')){
+							vali_object[tmp].icon.removeClass().addClass("icon-warning-sign");
+						}	
+					}else{
+						if(tmp=="pw"&&$("#sq_confirmpw").val().trim()){
+			    			var confirmFlag=($(this)[0].value.trim()===$("#sq_confirmpw").val().trim());
+			    			if(!confirmFlag){
+			    				nextFlag=0;
+			    				vali_object["confirmpw"].flag=0;
+								vali_object["confirmpw"].content.text(vali_object["confirmpw"].validateMes);
+								if(!vali_object["confirmpw"].icon.hasClass('icon-warning-sign')){
+									vali_object["confirmpw"].icon.removeClass().addClass("icon-warning-sign");
+								}	
+			    			}else{
+								vali_object["confirmpw"].content.text('');
+								if(!vali_object["confirmpw"].icon.hasClass('icon-ok-sign')){
+								vali_object["confirmpw"].icon.removeClass().addClass("icon-ok-sign");
+								vali_object["confirmpw"].flag=1;
+								nextFlag=1;
+									for(var i in vali_object){
+										nextFlag=nextFlag*vali_object[i].flag;
+									}
+								}
+			    			}
+			    		}
+						vali_object[tmp].content.text('');
+						vali_object[tmp].flag=1;
+						nextFlag=1;
+							for(var i in vali_object){
+								nextFlag=nextFlag*vali_object[i].flag;
+							}
+						if(!vali_object[tmp].icon.hasClass('icon-ok-sign')){
+						vali_object[tmp].icon.removeClass().addClass("icon-ok-sign");
+						}
+					}
+					
+					if(nextFlag){
+						onnextCheck.style.display="none";
+						$(".button-next").show();
+					}else{
+						onnextCheck.style.display="inline-block";
+						$(".button-next").hide();
+					}
+				});
+
+	  		})(tmp);
+	  	}
+    }
+
+	
+	ValidateInit(registerObj);		
+			
 
         $('#form_wizard_1').bootstrapWizard({
             'nextSelector': '.button-next',
@@ -1885,16 +2027,8 @@ var App = function () {
             onNext: function (tab, navigation, index) {
                 var total = navigation.find('li').length;
                 var current = index + 1;
-                // set wizard title
-                $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
-                // set done steps
-                jQuery('li', $('#form_wizard_1')).removeClass("done");
-                var li_list = navigation.find('li');
-                for (var i = 0; i < index; i++) {
-                    jQuery(li_list[i]).addClass("done");
-                }
-
-                if (current == 1) {
+                
+                if (current == 1) {         	
                     $('#form_wizard_1').find('.button-previous').hide();
                 }
                 else if(current==3){
@@ -1905,46 +2039,40 @@ var App = function () {
                 	$("#clipBtn").hide();
 					$('#form_wizard_1').find('.button-next').show();
                     $('#form_wizard_1').find('.button-previous').show();
+	                if(current==2){
+	                	onnextCheck.style.display="inline-block";
+	                	$(".button-next").hide();
+						ValidateInit(registerObj1);	
+	                }
+	                if(current==4){
+	                	_revAccout.innerText=registerObj['accout'].obj.val();
+	                	_revRealname.innerText=registerObj1['realname'].obj.val();
+	                	_revTel.innerText=registerObj1['tel'].obj.val();
+	                	_revMail.innerText=registerObj1['email'].obj.val();
+	                	
+	                	accountEntity.username=registerObj['accout'].obj.val();
+	                	accountEntity.pw=registerObj['pw'].obj.val();
+	                	accountEntity.realname=registerObj1['realname'].obj.val();;
+	                	accountEntity.tel=registerObj1['tel'].obj.val();
+	                	accountEntity.email=registerObj1['email'].obj.val();
+	                	accountEntity.avator=avator;
+	                }
                 }
-
+                
                 if (current >= total) {
                     $('#form_wizard_1').find('.button-next').hide();
                     $('#form_wizard_1').find('.button-submit').show();
                 } else {
                     $('#form_wizard_1').find('.button-submit').hide();
                 }
-                App.scrollTo($('.page-title'));
-            },
-            onPrevious: function (tab, navigation, index) {
-                var total = navigation.find('li').length;
-                var current = index + 1;
+ 
                 // set wizard title
-                $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                $('.step-title', $('#form_wizard_1')).text((index + 1) + ' of ' + total);
                 // set done steps
                 jQuery('li', $('#form_wizard_1')).removeClass("done");
                 var li_list = navigation.find('li');
                 for (var i = 0; i < index; i++) {
                     jQuery(li_list[i]).addClass("done");
-                }
-
-                if (current == 1) {
-                    $('#form_wizard_1').find('.button-previous').hide();
-                }
-                else if(current==3){
-                    $('#form_wizard_1').find('.button-next').hide();
-					$("#clipBtn").show();
-                }
-                else {
-                	$("#clipBtn").hide();
-					$('#form_wizard_1').find('.button-next').show();
-                    $('#form_wizard_1').find('.button-previous').show();
-                }
-
-                if (current >= total) {
-                    $('#form_wizard_1').find('.button-next').hide();
-                    $('#form_wizard_1').find('.button-submit').show();
-                } else {
-                    $('#form_wizard_1').find('.button-submit').hide();
                 }
 
                 App.scrollTo($('.page-title'));
@@ -1964,14 +2092,19 @@ var App = function () {
     }
     
     
-    var handleRegister=function(){
-        $('#form_wizard_1 .button-submit').click(function () {  	
-			$(this).mockPlugin('/users/doReg',
-			{'username':'kunnisser'},function(args){
-				console.log(args);
-				//window.location.href="/users/login";
-			});
-        });
+    var handleRegister=function(subFlag){
+    	if(subFlag){
+	        $('#form_wizard_1 .button-submit').on("click",function () { 
+	        	console.log(accountEntity);
+				$(this).mockPlugin('/users/doReg',accountEntity,function(args){
+					console.log(args);
+					//window.location.href="/users/login";
+				});
+	        });
+    	}else{
+    		$('#form_wizard_1 .button-submit').off("click");
+    	}
+
     }
     
     
@@ -2054,11 +2187,57 @@ var App = function () {
             }
         })
     }
+    
+    var validateForm=function(checkString,type){
+    	switch (type){
+    		case "accout":
+    		this.accout=/^[a-zA-Z0-9]{4,10}$/;
+    		return this.accout.test(checkString);
+    			break;
+    		case "pw":
+    		this.pw=/^[a-zA-Z0-9]{6,11}$/;
+    		return this.pw.test(checkString);
+    			break;
+    		case "confirmpw":
+    		return this.pw.test(checkString)&&checkString===$("#sq_password").val().trim();
+    			break;
+    		case "tel":
+    		this.tel=/^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|5|6|7|8|9]|147|177)\d{8}$/;
+			return this.tel.test(checkString);
+    			break;
+    		case "email":
+    		this.email= /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+    		return this.email.test(checkString);
+    			break;
+    		case "realname":
+    		this.realname=/^[\u4e00-\u9fa5]{2,4}$/;
+    		return this.realname.test(checkString);
+    			break;
+    	}
+    }
 
     return {
 
         //main function to initiate template pages
         init: function () {
+        	
+			//crop init
+			$("#clipArea").photoClip({
+				width:100,
+				height:100,
+				file: "#file",
+				view: "#view",
+				ok: "#clipBtn",
+				loadStart: function() {
+					console.log("照片读取中");
+				},
+				loadComplete: function() {
+					console.log("照片读取完成");
+				},
+				clipFinish: function(dataURL) {
+					avator=dataURL;
+				}
+			});
 
             if (jQuery.browser.msie && jQuery.browser.version.substr(0, 1) == 8) {
                 isIE8 = true; // checkes for IE8 browser version
@@ -2105,7 +2284,11 @@ var App = function () {
             handleAccordions();
             handleFormWizards();
             handleSidebarToggler();
-			handleRegister();
+            $("#confirmAll").on("change",function(){
+            	var subFlag=$(this).is(":checked")?true:false;
+   				handleRegister(subFlag);
+            });
+			
         },
 
         // login page setup
@@ -2179,7 +2362,7 @@ var App = function () {
     //input mask
 
     $('.inputmask').inputmask();
-
+    
 }();
 
 //tooltips

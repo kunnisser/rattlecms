@@ -3499,6 +3499,13 @@ ul.amounts li {
 	width: 100px;
 	height: 100px;
 }
+#clipBtn{
+	margin-left: -160px;
+}
 .uploadModel{ margin-left: 20px; width: 82px; height: 30px; position: relative; overflow: hidden;}
 .uploadModel button{position: absolute; top: 0; left: 0; z-index: 9;}
 .uploadModel #file{ position: absolute; top: 0; left: 0; z-index: 999; width: 100%; height: 100%; opacity: 0; filter: alpha(opacity=0);}
+
+.controls .error-info{ display: none; color: #DA4F49;}
+.error-info .icon-ok-sign{color: rgb(29, 164, 231);}
+.uploadModel{ cursor: pointer;}

@@ -8,7 +8,7 @@ Website: http://thevectorlab.net/
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="zh"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
   <meta charset="utf-8" />
@@ -59,7 +59,7 @@ Website: http://thevectorlab.net/
                   <div class="widget box blue" id="form_wizard_1">
                      <div class="widget-title">
                         <h4>
-                           <i class="icon-reorder"></i> 申请管理 - <span class="step-title"> 1 / 4</span>
+                           <i class="icon-reorder"></i> 申请管理 - <span class="step-title">1 / 4</span>
                         </h4>
                      </div>
                      <div class="widget-body form">
@@ -105,21 +105,21 @@ Website: http://thevectorlab.net/
                                        <label class="control-label">管理名称</label>
                                        <div class="controls">
                                           <input type="text" class="span6" id="sq_username"/>
-                                          <span class="help-inline">填写你的账号</span>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">请填写你的账号</span></span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">密码</label>
                                        <div class="controls">
-                                          <input type="password" class="span6" id="sq-password"/>
-                                          <span class="help-inline">请填写密码</span>
+                                          <input type="password" class="span6" id="sq_password"/>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">请填写密码</span></span>
                                        </div>
                                     </div>
                                     <div class="control-group">
-                                       <label class="control-label">请确认密码</label>
+                                       <label class="control-label">确认密码</label>
                                        <div class="controls">
-                                          <input type="password" class="span6" id="sq-confirmpw"/>
-                                          <span class="help-inline">确认密码</span>
+                                          <input type="password" class="span6" id="sq_confirmpw"/>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">请确认密码</span></span>
                                        </div>
                                     </div>
                                  </div>
@@ -129,21 +129,21 @@ Website: http://thevectorlab.net/
                                        <label class="control-label">您的姓名</label>
                                        <div class="controls">
                                           <input type="text" class="span6" id="realname"/>
-                                          <span class="help-inline">请填写真实姓名</span>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">请填写真实姓名</span></span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">联系号码</label>
                                        <div class="controls">
                                           <input type="tel" class="span6" id="phonenum"/>
-                                          <span class="help-inline">填写手机号码</span>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">填写手机号码</span></span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">邮箱</label>
                                        <div class="controls">
                                           <input type="email" class="span6" id="sq-email"/>
-                                          <span class="help-inline">请填写邮箱</span>
+                                          <span class="help-inline error-info"><i class="icon-warning-sign"></i> <span class="error-content">请填写邮箱</span></span>
                                        </div>
                                     </div>
                                  </div>
@@ -153,7 +153,7 @@ Website: http://thevectorlab.net/
                                     	<!--crop Handler-->
 																	  	<div id="clipArea"></div>
 																	  	<div class="uploadModel">
-																	  		<button type="button" class="btn btn-inverse">上传图片</button>
+																	  		<button type="button" class="btn btn-success">上传图片</button>
 																				<input type="file" id="file" accept="image/*">
 																	  	</div>
 
@@ -171,42 +171,42 @@ Website: http://thevectorlab.net/
                                     <div class="control-group">
                                        <label class="control-label">账号名称:</label>
                                        <div class="controls">
-                                          <span class="text">Mosaddek Hossain</span>
+                                          <span class="text" id="review_accout">未知</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
-                                       <label class="control-label">密码:</label>
+                                       <label class="control-label">姓名:</label>
                                        <div class="controls">
-                                          <span class="text">adminAdmin</span>
+                                          <span class="text" id="review_realname">未知</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">邮箱:</label>
                                        <div class="controls">
-                                          <span class="text">dkmosa@gmail.com</span>
+                                          <span class="text" id="review_mail">未知</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label">联系方式:</label>
                                        <div class="controls">
-                                          <span class="text">123456789</span>
+                                          <span class="text" id="review_tel">未知</span>
                                        </div>
                                     </div>
                                     <div class="control-group">
                                        <label class="control-label"></label>
                                        <div class="controls">
                                           <label class="checkbox">
-                                          <input type="checkbox" value="" /> 我已确认填写内容
+                                          <input type="checkbox" value="" id="confirmAll"/> 我已确认填写内容
                                           </label>
                                        </div>
                                     </div>
                                  </div>
                               </div>
                               <div class="form-actions clearfix">
-                                 <a href="javascript:;" class="btn button-previous">
-                                 <i class="icon-angle-left"></i> 上一步 
+                                 <a href="javascript:;" class="btn btn-inverse disabled" id="checkForm">
+                                 		下一步 <i class="icon-angle-right"></i>
                                  </a>
-                                 <a href="javascript:;" class="btn btn-primary blue button-next">
+                                 <a href="javascript:;" class="btn btn-primary blue button-next" style="display: none;">
                                  		下一步 <i class="icon-angle-right"></i>
                                  </a>
                                  <a href="javascript:;" class="btn btn-primary blue" id="clipBtn" style="display: none;">
@@ -252,23 +252,6 @@ Website: http://thevectorlab.net/
       jQuery(document).ready(function() {       
          // initiate layout and plugins
          App.init();
-				//crop init
-				$("#clipArea").photoClip({
-					width: 200,
-					height: 200,
-					file: "#file",
-					view: "#view",
-					ok: "#clipBtn",
-					loadStart: function() {
-						console.log("照片读取中");
-					},
-					loadComplete: function() {
-						console.log("照片读取完成");
-					},
-					clipFinish: function(dataURL) {
-						console.log(dataURL);
-					}
-				});
       });
    </script>
 </body>

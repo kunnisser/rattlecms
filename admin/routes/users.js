@@ -72,6 +72,7 @@ router.get("/loginout",function(req,res){
 /*注册账号*/
 router.post("/doReg",function(req,res){
 	console.log(req.body.username);
+	console.log(req.body.avator);
 	res.json({'flag':'true'});
 });
 
